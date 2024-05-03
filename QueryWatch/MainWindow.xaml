@@ -1,0 +1,30 @@
+﻿<Window x:Class="QueryWatch.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QueryWatch"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Row="0" Grid.Column="0" Click="NoSubscribers_Click">No Subscribers for long time</Button>
+        <Button Grid.Row="0" Grid.Column="1" Click="GeneratedBilledMTs_Click">Generated billed MTs (last 3 hours)</Button>
+        <Button Grid.Row="0" Grid.Column="2" Click="CumulativeBillingPercentAllDay_Click">Cumulative billing percent all day</Button>
+        <Button Grid.Row="1" Grid.Column="0" Click="UnProcessedMTs_Click">UnProcessed MTs (Last 12 Hrs)</Button>
+        <Button Grid.Row="1" Grid.Column="1" Click="ChangeInBillingStatus_Click">Change in Billing Status</Button>
+        <Button Grid.Row="1" Grid.Column="2" Click="NonStartedISTTasks_Click">Non started IST tasks</Button>
+        <Button Grid.Row="2" Grid.Column="1" Click="BillingPercentInLastHour_Click">Billing Percent in last hour</Button>
+        <Button Grid.Row="2" Grid.Column="2" Click="AverageMOProcessingTime_Click">Average MO Processing Time</Button>
+    </Grid>
+</Window>

@@ -17,12 +17,12 @@ namespace QueryWatch.AlertsPages
         {
             using var connection = ServiceLocator.GetConnection();
 
-            var sql = @"SELECT CAST(DateCreated AS DATE) AS Date, 
+            var sql = @"SELECT CAST(Date_created AS DATE) AS Date, 
                        COUNT(*) AS TotalAttempts,
-                       SUM(CASE WHEN BillingStatus > 0 THEN 1 ELSE 0 END) AS SuccessfulAttempts
+                       SUM(CASE WHEN Billing_Status > 0 THEN 1 ELSE 0 END) AS SuccessfulAttempts
                 FROM MT_Messages With(Nolock)
                 WHERE OC = @operatorId AND (@serviceId = '' OR SrvcId = @serviceId)
-                GROUP BY CAST(DateCreated AS DATE)
+                GROUP BY CAST(Date_created AS DATE)
                 ORDER BY Date DESC
                 OFFSET 0 ROWS FETCH NEXT 100 ROWS ONLY";
 

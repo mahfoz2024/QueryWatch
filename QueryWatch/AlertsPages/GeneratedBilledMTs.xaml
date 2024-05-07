@@ -33,16 +33,14 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <Label Content="Service Id:" />
-                <TextBox x:Name="ServiceIdTextBox" />
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal">
                 <Label Content="SourceCon:" />
                 <TextBox x:Name="SourceConTextBox" />
             </StackPanel>
 
-
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Service Id:" />
+                <TextBox x:Name="ServiceIdTextBox" />
+            </StackPanel>
 
             <Button Content="Execute" Margin="10" Click="Execute_Click"  />
         </StackPanel>

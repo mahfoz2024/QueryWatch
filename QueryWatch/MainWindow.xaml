@@ -17,14 +17,8 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-
-        <Button Grid.Row="0" Grid.Column="0" Click="NoSubscribers_Click">No Subscribers for long time</Button>
-        <Button Grid.Row="0" Grid.Column="1" Click="GeneratedBilledMTs_Click">Generated billed MTs (last 3 hours)</Button>
-        <Button Grid.Row="0" Grid.Column="2" Click="CumulativeBillingPercentAllDay_Click">Cumulative billing percent all day</Button>
-        <Button Grid.Row="1" Grid.Column="0" Click="UnProcessedMTs_Click">UnProcessed MTs (Last 12 Hrs)</Button>
-        <Button Grid.Row="1" Grid.Column="1" Click="ChangeInBillingStatus_Click">Change in Billing Status</Button>
-        <Button Grid.Row="1" Grid.Column="2" Click="NonStartedISTTasks_Click">Non started IST tasks</Button>
-        <Button Grid.Row="2" Grid.Column="1" Click="BillingPercentInLastHour_Click">Billing Percent in last hour</Button>
-        <Button Grid.Row="2" Grid.Column="2" Click="AverageMOProcessingTime_Click">Average MO Processing Time</Button>
+        <Button Grid.Row="1" Grid.Column="0" Click="Operators_Click">Operators</Button>
+        <Button Grid.Row="1" Grid.Column="1" Click="Alerts_Click">Alerts</Button>
+        <Button Grid.Row="1" Grid.Column="2" Click="Services_Click">Services</Button>
     </Grid>
 </Window>

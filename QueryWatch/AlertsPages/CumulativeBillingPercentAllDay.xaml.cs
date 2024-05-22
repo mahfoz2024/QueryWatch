@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using System.Data.SqlClient;
 using System.Windows;
 
 namespace QueryWatch.AlertsPages
@@ -15,25 +16,44 @@ namespace QueryWatch.AlertsPages
 
         private async void Execute_Click(object sender, RoutedEventArgs e)
         {
-            using var connection = ServiceLocator.GetConnection();
+            try
+            {
+                using var connection = ServiceLocator.GetConnection();
 
-            var sql = @"SELECT CAST(Date_created AS DATE) AS Date, 
-                       COUNT(*) AS TotalAttempts,
-                       SUM(CASE WHEN Billing_Status > 0 THEN 1 ELSE 0 END) AS SuccessfulAttempts
-                FROM MT_Messages With(Nolock)
-                WHERE OC = @operatorId AND (@serviceId = '' OR SrvcId = @serviceId)
-                GROUP BY CAST(Date_created AS DATE)
-                ORDER BY Date DESC
-                OFFSET 0 ROWS FETCH NEXT 100 ROWS ONLY";
+                if (!int.TryParse(OperatorIdTextBox.Text, out int operatorId))
+                {
+                    MessageBox.Show("Invalid Operator ID");
+                    return;
+                }
 
-            var results = await connection.QueryAsync(sql,
-                                                   new
-                                                   {
-                                                       operatorId = int.Parse(OperatorIdTextBox.Text),
-                                                       serviceId = ServiceIdTextBox.Text
-                                                   });
+                if (!int.TryParse(ServiceIdTextBox.Text, out int serviceId))
+                {
+                    MessageBox.Show("Invalid Service ID");
+                    return;
+                }
 
-            dataGrid1.ItemsSource = results;
+                var sql = @"SELECT CAST(Date_created AS DATE) AS Date, 
+                           COUNT(*) AS TotalAttempts,
+                           SUM(CASE WHEN Billing_Status > 0 THEN 1 ELSE 0 END) AS SuccessfulAttempts
+                    FROM MT_Messages WITH(NOLOCK)
+                    WHERE OC = @operatorId AND (@serviceId = 0 OR SrvcId = @serviceId)
+                    GROUP BY CAST(Date_created AS DATE)
+                    ORDER BY Date DESC
+                    OFFSET 0 ROWS FETCH NEXT 100 ROWS ONLY";
+
+                var results = await connection.QueryAsync(sql, new { operatorId, serviceId });
+
+                dataGrid1.ItemsSource = results;
+            }
+            catch (SqlException sqlEx)
+            {
+                MessageBox.Show($"A database error occurred: {sqlEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An unexpected error occurred: {ex.Message}");
+            }
         }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using QueryWatch.AlertsPages;
+using QueryWatch.MainPages;
 using System.Windows;
 
 namespace QueryWatch
@@ -13,55 +14,24 @@ namespace QueryWatch
             InitializeComponent();
         }
 
-        private void NoSubscribers_Click(object sender, RoutedEventArgs e)
-        {
-            var NoSubscribers = new NoSubscribersForLongTime();
-            NoSubscribers.Show();
+       
 
-        }
-
-        private void CumulativeBillingPercentAllDay_Click(object sender, RoutedEventArgs e)
+        private void Operators_Click(object sender, RoutedEventArgs e)
         {
-            var window = new CumulativeBillingPercentAllDay();
+            var window = new Operators();
             window.Show();
         }
 
-        private void UnProcessedMTs_Click(object sender, RoutedEventArgs e)
+        private void Alerts_Click(object sender, RoutedEventArgs e)
         {
-            var window = new UnProcessedMTs();
+            var window=new Alerts();
             window.Show();
         }
 
-        private void GeneratedBilledMTs_Click(object sender, RoutedEventArgs e)
+        private void Services_Click(object sender, RoutedEventArgs e)
         {
-            var window = new GeneratedBilledMTs();
-            window.Show();
+            var windows = new Services();
+            windows.Show();
         }
-
-        private void NonStartedISTTasks_Click(object sender, RoutedEventArgs e)
-        {
-            var window = new NonStartedISTTasks();
-            window.Show();
-        }
-
-        private void AverageMOProcessingTime_Click(object sender, RoutedEventArgs e)
-        {
-            var window = new AverageMOProcessingTime();
-            window.Show();
-        }
-
-        private void ChangeInBillingStatus_Click(object sender, RoutedEventArgs e)
-        {
-            var window = new ChangeInBillingStatus();
-            window.Show();
-        }
-
-        private void BillingPercentInLastHour_Click(object sender, RoutedEventArgs e)
-        {
-            var window = new BillingPercentInLastHour();
-            window.Show();
-        }
-
-
     }
 }
